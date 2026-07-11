@@ -3,15 +3,16 @@ title: AstrOS
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import logoDark from '../../assets/logo.svg';
+import logoLight from '../../assets/logo-light.svg';
 
 <Aside type="danger" title="AstrOS is alpha software">
 Expect breaking changes, missing features, and rough edges. Don't run it on a machine you depend on.
 </Aside>
 
-<p align="left">
-  <img src="/logo.svg" width="50%" class="light:sl-hidden"/>
-  <img src="/logo-light.svg" width="50%" class="dark:sl-hidden"/>
-</p>
+<Image src={logoDark} alt="The AstrOS logo" width="400" class="light:sl-hidden" />
+<Image src={logoLight} alt="The AstrOS logo" width="400" class="dark:sl-hidden" />
 
 **AstrOS** is an immutable, secure-by-default Linux distribution built on **Arch Linux** and the **COSMIC** desktop.
 
@@ -20,4 +21,3 @@ Expect breaking changes, missing features, and rough edges. Don't run it on a ma
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/f38pGadC2a)
 
 [![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/r/AstrOS_Linux)
-
