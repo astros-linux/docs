@@ -8,7 +8,7 @@ export default defineConfig({
 		starlight({
 			title: 'AstrOS Docs',
       logo: {
-        src: `./src/assets/mark.svg`
+        src: `./public/favicon.svg`
       },
 			social: [
         { icon: 'reddit', label: 'Reddit', href: 'https://www.reddit.com/r/AstrOS_Linux' },
