@@ -21,3 +21,11 @@ updatectl features
 
 updatectl enable --now --reboot <feature>
 ```
+
+Disable extensions:
+
+```sh
+updatectl disable --now <feature>
+
+sudo rm /var/lib/extensions/<feature_version.raw>
+```
