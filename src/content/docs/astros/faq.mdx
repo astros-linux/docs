@@ -25,3 +25,5 @@ AstrOS is a strongly opinionated project. Due to its image-based nature, it isn'
 ## How to enable secure-boot?
 
 To ensure real security, we don't ship Microsoft's secure boot keys. Therefore, to enable Secure Boot, the device must be in Setup Mode. Once it is, you can enroll our own keys in the Systemd-Boot menu.
+
+<Aside type="caution">Some rare hardware requires its own/Microsoft's key to work with Secure Boot enabled. In this case, we recommend not using Secure Boot at all, which is fine because AstrOS is pretty much tamper-proof anyway due to its verified and signed nature.</Aside>
