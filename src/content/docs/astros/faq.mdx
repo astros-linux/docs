@@ -27,3 +27,7 @@ AstrOS is a strongly opinionated project. Due to its image-based nature, it isn'
 To ensure real security, we don't ship Microsoft's secure boot keys. Therefore, to enable Secure Boot, the device must be in Setup Mode. Once it is, you can enroll our own keys in the Systemd-Boot menu.
 
 <Aside type="caution">Some rare hardware requires its own/Microsoft's key to work with Secure Boot enabled. In this case, we recommend not using Secure Boot at all, which is fine because AstrOS is pretty much tamper-proof anyway due to its verified and signed nature.</Aside>
+
+## What is Safe Mode?
+
+Safe mode starts your system with all system extensions disabled. In the worst-case scenario, where a system extension prevents your system from booting at all, safe mode lets you boot up and so you can disable the extension. In such cases, please report the extension responsible.
