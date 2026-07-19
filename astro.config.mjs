@@ -13,6 +13,7 @@ export default defineConfig({
       social: [
         { icon: 'reddit', label: 'Reddit', href: 'https://www.reddit.com/r/AstrOS_Linux' },
         { icon: 'discord', label: 'Discord', href: 'https://discord.gg/f38pGadC2a' },
+        { icon: 'matrix', label: 'Matrix', href: 'https://matrix.to/#/%23general:astros-linux.org' },
         { icon: 'github', label: 'GitHub', href: 'https://github.com/astros-linux/AstrOS' }
       ],
       editLink: {
