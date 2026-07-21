@@ -11,6 +11,7 @@ system:
 git clone --recurse-submodules https://github.com/astros-linux/AstrOS
 cd AstrOS/system
 mkosi genkey # You'll need your own keys, or AstrOS will fail to build.
+chmod 0600 mkosi.key mkosi.crt
 mkosi -f -B # This builds to `mkosi.output/`
 ```
 
