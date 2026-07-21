@@ -2,6 +2,8 @@
 title: Updating
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
 AstrOS uses systemd-sysupdate. Use [updatectl](https://man.archlinux.org/man/updatectl.1) to update your system:
 
 ```sh
@@ -11,6 +13,8 @@ updatectl update
 Use `updatectl vacuum` in case of the update failing because of previously unfinished updates.
 
 ### Auto Updates
+
+<Aside type="caution">We don't recommend enabling automatic updates while we are still in alpha.</Aside>
 
 To enable auto-updates run:
 
