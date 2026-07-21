@@ -1,0 +1,83 @@
+---
+title: Troubleshooting
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## How to re-enroll the tpm?
+
+First wipe any old stale tpm's:
+
+```sh
+sudo systemd-cryptenroll --wipe-slot tpm2 /dev/disk/by-label/luks-AstrOS-root
+```
+
+Enroll your tpm2, you will be asked for your recovery key.
+
+```sh
+sudo systemd-cryptenroll --tpm2-device auto /dev/disk/by-label/luks-AstrOS-root
+```
+
+## How to rollback?
+
+1. Reboot.
+2. When the systemd-boot menu appears, select the other image entry. If the menu
+   does not appear on its own, hold <kbd>Space</kbd> during boot to force it.
+3. Press <kbd>Enter</kbd> to boot the selected entry.
+
+To confirm which build you landed on:
+
+```sh
+cat /etc/os-release
+```
+
+## Upgrading from 20260721000055 or earlier
+
+<Aside type="danger" title="Action required before you reboot">
+Applies to **every** system updating from build `20260721000055` or earlier.
+
+If you boot the new image without completing those steps, the new image will start
+without your user account and will re-run first-boot setup. Nothing is lost
+permanently as the account is still present after a rollback.
+</Aside>
+
+### 1. Persist `/etc` before updating
+
+Copy the current `/etc` into the mutable extensions directory and drop the
+symlinks that point back into the factory tree:
+
+```sh
+sudo mkdir -p /var/lib/extensions.mutable
+sudo cp --archive --no-target-directory /etc /var/lib/extensions.mutable/etc
+sudo find /var/lib/extensions.mutable/etc -lname '*share/factory*' -delete
+```
+
+### 2. Update and reboot
+
+```sh
+updatectl update
+sudo systemctl reboot
+```
+
+Log in to confirm your user account is intact before continuing.
+
+### 3. Remove the stale `/etc`
+
+The old `/etc` is still on disk and could cause problems in the future.
+
+- Roll back to build `20260721000055` or earlier.
+- Confirm which build you booted:
+
+```sh
+   cat /etc/os-release
+```
+
+   Do not continue unless this reports `20260721000055` or older.
+
+- Delete the stale configuration:
+
+```sh
+   sudo rm -rf /etc/*
+```
+
+- Reboot back into the new image.
