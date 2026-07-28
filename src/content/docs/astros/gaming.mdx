@@ -1,0 +1,45 @@
+---
+title: "Gaming"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import greeter_gamescope from '../../../assets/cosmic-greeter-steam-gamescope.png';
+
+## System-packaged steam
+
+Many people prefer to install Steam as a system package rather than using Flatpak. We have integrated it into our Steam gaming system extension. Enable it via:
+
+```sh
+updatectl enable --now --reboot steam-gaming
+```
+
+## Gaming Mode (steamos inspired)
+
+<Aside type="caution">The gaming mode is still experimental, so some features, such as session switching, may not work as smoothly as you are used to on the Steam Deck. We plan to integrate it more deeply with cosmic(-greeter) in the future.</Aside>
+
+We provide a Steam Gamescope session in the aforementioned extension. Install and select it in Cosmic Greeter:
+
+<Image src={greeter_gamescope} alt="cosmic-greeter session selection" />
+
+### Auto login into Gaming Mode
+
+<Aside>We plan to make this easier in future.</Aside>
+
+<Aside type="caution">Enabling autologin of any kind reduces your system’s security. However, this is acceptable for a machine that is primarily used for gaming.</Aside>
+
+We need to manually edit Cosmic Greeter's configuration file:
+
+```sh
+sudo vim /etc/greetd/cosmic-greeter.toml
+```
+
+Add the following section:
+
+```toml
+[initial_session]
+command = "gamescope-session-plus steam"
+user = "<your-username>"
+```
+
+Substitute `<your-username>` with your actual username.
