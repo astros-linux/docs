@@ -32,6 +32,7 @@ export default defineConfig({
             { slug: "astros/installing-software" },
             { slug: "astros/gaming" },
             { slug: "astros/troubleshooting" },
+            { slug: "astros/breaking-changes" },
             { slug: "astros/faq" }
           ]
         },
