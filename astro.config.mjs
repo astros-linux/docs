@@ -6,7 +6,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'AstrOS Docs',
+      title: 'AstrOS',
       logo: {
         src: './src/assets/mark.svg',
       },
