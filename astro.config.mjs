@@ -14,10 +14,11 @@ export default defineConfig({
         { icon: 'reddit', label: 'Reddit', href: 'https://www.reddit.com/r/AstrOS_Linux' },
         { icon: 'discord', label: 'Discord', href: 'https://discord.gg/f38pGadC2a' },
         { icon: 'matrix', label: 'Matrix', href: 'https://matrix.to/#/%23general:astros-linux.org' },
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/astros-linux/AstrOS' }
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/astros-linux/AstrOS' },
+        { icon: 'seti:git', label: 'Forgejo', href: 'https://code.astros-linux.org/AstrOS/AstrOS' }
       ],
       editLink: {
-        baseUrl: 'https://github.com/astros-linux/docs/edit/main/',
+        baseUrl: 'https://code.astros-linux.org/AstrOS/docs/_edit/main/',
       },
       customCss: [
         './src/styles/custom.css',
