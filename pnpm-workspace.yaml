@@ -3,3 +3,4 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - '@astrojs/starlight@0.41.5'
+  - '@astrojs/starlight@0.41.6'
