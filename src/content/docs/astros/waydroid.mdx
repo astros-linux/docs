@@ -1,0 +1,63 @@
+---
+title: "Waydroid"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Installation
+
+We offer waydroid in form of an system extension, you can enable using:
+
+```sh
+updatectl enable --now --reboot waydroid
+```
+
+Download the latest Android Image using:
+
+```sh
+sudo waydroid init
+#or
+sudo waydroid init -s GAPPS
+```
+
+Or, by using the GUI when opening Waydroid from your app menu.
+
+Update the used android image with:
+
+```sh
+sudo waydroid upgrade
+```
+
+## Usage
+
+Install an application using the gapps store / fdroid etc or with:
+
+```sh
+waydroid app install $path_to_apk
+```
+
+## Software rendering
+
+<Aside>This is probably required for Nvidia users. Alternatively, use the iGPU for Waydroid.</Aside>
+
+Add the following to `/var/lib/waydroid/waydroid.cfg`:
+
+```cfg
+[properties]
+ro.hardware.gralloc=default
+ro.hardware.egl=swiftshader
+```
+
+Then run:
+
+```sh
+sudo waydroid upgrade --offline
+sudo systemctl restart waydroid-container.service
+```
+
+## Reset waydroid
+
+```sh
+sudo systemctl stop waydroid-container.service
+sudo rm -rf /var/lib/waydroid /home/.waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+```

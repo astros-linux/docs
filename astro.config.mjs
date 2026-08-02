@@ -32,6 +32,7 @@ export default defineConfig({
             { slug: "astros/updating" },
             { slug: "astros/installing-software" },
             { slug: "astros/gaming" },
+            { slug: "astros/waydroid" },
             { slug: "astros/troubleshooting" },
             { slug: "astros/breaking-changes" },
             { slug: "astros/faq" }
