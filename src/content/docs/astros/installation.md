@@ -27,9 +27,10 @@ Any tool that writes a raw image (e.g. `dd`) works too. Remember to decompress t
 
 ## Install
 
+1. Ensure that Secure Boot is either disabled or in Setup Mode.
 1. Boot the usb stick.
-2. Select and confirm your disk to install to.
-3. Done
+1. Select and confirm your disk to install to.
+1. Done
 
 ### First Boot Setup
 
