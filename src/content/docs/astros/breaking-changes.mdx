@@ -2,23 +2,28 @@
 title: "Breaking Changes"
 ---
 
+import { Steps } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-## Outdated systemd-sysupdate transfer files
+## In case of outdated systemd-sysupdate transfer files
 
-- Download or clone our [repo](https://code.astros-linux.org/AstrOS/AstrOS).
+<Steps>
 
-- Navigate to the correct path:
+1. Download or clone our [repo](https://code.astros-linux.org/AstrOS/AstrOS).
 
-```sh
-cd AstrOS/system/mkosi.images/base/mkosi.extra/usr/lib/
-```
+2. Navigate to the correct path:
 
-- Update from the newest transfer files:
+   ```sh
+   cd AstrOS/system/mkosi.images/base/mkosi.extra/usr/lib/
+   ```
 
-```sh
-sudo systemd-sysupdate update --definitions=sysupdate.d/
-```
+3. Update from the newest transfer files:
+
+   ```sh
+   sudo systemd-sysupdate update --definitions=sysupdate.d/
+   ```
+
+</Steps>
 
 ## Upgrading from 20260721000055 or earlier
 
