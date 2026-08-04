@@ -1,0 +1,66 @@
+---
+title: "Unofficial: Dualboot with Windows"
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution">
+  This setup is not officially supported. Do not expect bugs related to it to be given a high priority.
+
+  Backup your important files!
+</Aside>
+
+## Prepare windows
+
+<Steps>
+
+1. Your EFI Partition needs to be at least 1G.
+
+   For existing installs use: [Arch Wiki: Replace the partition with a larger one](https://wiki.archlinux.org/title/EFI_system_partition#Replace_the_partition_with_a_larger_one)
+
+   For fresh installs use: [Arch Wiki: dictate the size of the EFI system partition during installation](https://wiki.archlinux.org/title/Dual_boot_with_Windows#The_EFI_system_partition_created_by_Windows_Setup_is_too_small)
+
+2. <Aside>Dual booting with Secure Boot enabled won't work because AstrOS uses its own keys.</Aside>
+
+   Disable Secure Boot and verify that Windows still boots up.
+
+3. Lastly, open Disk Management and shrink your Windows NTFS partition.
+
+</Steps>
+
+## Install AstrOS
+
+<Steps>
+
+1. We won't use the official installer. Instead, download the AstrOS DDI (system image) from [https://dl.astros-linux.org/AstrOS_'LATEST-VERSION'_x86-64.raw.zst](https://dl.astros-linux.org/AstrOS_'LATEST-VERSION'_x86-64.raw.zst).
+You can find the latest version number in the [CI logs](https://ci.astros-linux.org/repos/2). Otherwise, download and mount the official installer to copy the DDI out of the `images` partition.
+
+2. Write the DDI to a USB stick with at least 16 GB of storage and boot it.
+
+3. Go through the first boot setup and open a terminal.
+
+4. Use systemd repart to clone AstrOS to your system disk:
+
+   ```sh
+   sudo systemd-repart --dry-run=yes --empty=refuse --defer-partitions=root /dev/drive
+   # Confirm that everything is as you want it to be, and then run it again with --dry-run=no.
+   sudo systemd-repart --dry-run=no --empty=refuse --defer-partitions=root /dev/drive
+   ```
+
+5. Mount the ESP of the partition to which you will install and use rsync to copy /boot to it:
+
+   ```
+   sudo mkdir /mnt
+   sudo mount /dev/sdxY /mnt
+   sudo cp -r /boot/. /mnt
+
+6. Create a boot entry (only required on some hardware).
+
+   ```
+   efibootmgr --create --disk /dev/sdX --part Y --loader '\EFI\systemd\systemd-bootx64.efi' --label "AstrOS" --unicode
+   ```
+
+7. Reboot
+
+</Steps>

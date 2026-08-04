@@ -39,6 +39,12 @@ export default defineConfig({
           ]
         },
         {
+          label: 'Guides',
+          items: [
+            { slug: "guides/dualboot-with-windows" }
+          ]
+        },
+        {
           label: 'Developer',
           items: [
             { slug: "dev/building" }
