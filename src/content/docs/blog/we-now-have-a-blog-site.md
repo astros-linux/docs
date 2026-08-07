@@ -1,5 +1,5 @@
 ---
-title: "We now have a blog site."
+title: "We now have a blog site"
 date: 2026-08-07
 ---
 
