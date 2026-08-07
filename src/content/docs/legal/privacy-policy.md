@@ -34,15 +34,20 @@ so you can verify this yourself.
 ### 3.2 Downloading system updates and extensions
 
 AstrOS downloads its images and updates from `dl.astros-linux.org`. This occurs when systemd-sysupdate is utilised.
+No account or installation identifier is needed. As with any download, your IP
+address, the requested file, and your user agent are visible to the server serving it.
 
-Downloads are served from a Cloudflare R2 bucket.
+Downloads are served from a Cloudflare R2 bucket. Cloudflare acts as our processor
+and keeps its own edge logs, over which we have no control.
 Take a look at: [Cloudflare, Inc.](https://www.cloudflare.com/privacypolicy/)
+
+**Legal basis:** Art. 6(1)(b) and 6(1)(f) GDPR.
 
 ### 3.3 Third-party connections your system may make
 
 A general-purpose operating system talks to the network. These connections go to
-third parties, not to us, and are governed by their own privacy policies.
-
+third parties, not to us, and are governed by their own privacy policies. We are
+not the controller for them.
 Example:
 
 - systemd-timesyncd -> NTP pool servers
@@ -60,7 +65,17 @@ We process this data to establish a connection to your device over the Internet.
 We store the aforementioned data in log files in order to ensure the
 security and integrity of our infrastructure.
 
-## 5. Accounts and community services
+**Legal basis:** Art. 6(1)(f) GDPR. Recital 49 GDPR recognises network security as
+a legitimate interest.
+
+## 5. Cookies
+
+No analytics, advertising, or tracking cookies, and no third-party scripts. Forgejo
+and PocketID set a session cookie once you log in, and your Matrix client stores
+login and encryption keys locally in your browser. These are strictly necessary, so
+we ask for no cookie consent.
+
+## 6. Accounts and community services
 
 Our services are self-hosted on a Hetzner VPS. We collect your account
 information from the relevant services to ensure
@@ -71,11 +86,23 @@ you can register and login.
 - Matrix (localpart, display name, messages, uploaded media, device list, IPs)
 - AstrOS Homepage (IPs and user-agent in logs)
 
+**Legal basis:** Art. 6(1)(b) GDPR. Providing this data is not a legal requirement,
+but it is necessary to hold an account. AstrOS itself and our Sites need no account.
+
 Our Matrix server has federation enabled, which means your messages
 and public profile are copied to other servers whose operators
-are independent data controllers.
+are independent data controllers. We cannot recall, correct, or delete those copies.
 
-## 6. Your Rights
+## 7. Retention
+
+| Data | Kept for |
+| --- | --- |
+| Logs (all services) | 30 days |
+| Account data | until you delete your account |
+| Messages | permanent (due to federation) |
+| Git commit author name and email | permanent |
+
+## 8. Your Rights
 
 Under the GDPR, you have the following rights regarding your personal data:
 
@@ -88,6 +115,15 @@ Under the GDPR, you have the following rights regarding your personal data:
 - Right to withdraw consent (Art. 7(3) GDPR)
 - Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)
 
+You have equivalent rights under the FADP (Art. 25, 28 and 32 FADP).
+
 To exercise these rights, please contact us at <a href="mailto:contact@astros-linux.org">contact@astros-linux.org</a>.
+We may ask you to confirm the request from your registered address so we do not hand
+your data to someone else.
+
+## 8. Changes
+
+We may update this policy. The current version is always here with the date at the
+top, and every change is auditable in public git.
 
 ---
