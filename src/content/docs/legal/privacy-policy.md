@@ -41,7 +41,7 @@ Downloads are served from a Cloudflare R2 bucket. Cloudflare acts as our process
 and keeps its own edge logs, over which we have no control.
 Take a look at: [Cloudflare, Inc.](https://www.cloudflare.com/privacypolicy/)
 
-**Legal basis:** Art. 6(1)(b) and 6(1)(f) GDPR.
+**Legal basis:** Art. 6(1)(f) GDPR.
 
 ### 3.3 Third-party connections your system may make
 
