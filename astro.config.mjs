@@ -49,6 +49,13 @@ export default defineConfig({
           items: [
             { slug: "dev/building" }
           ]
+        },
+        {
+          label: 'Legal',
+          items: [
+            { slug: "legal/legal-notice" },
+            { slug: "legal/privacy-policy" }
+          ]
         }
       ]
     }),
