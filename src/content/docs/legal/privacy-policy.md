@@ -93,7 +93,15 @@ Our Matrix server has federation enabled, which means your messages
 and public profile are copied to other servers whose operators
 are independent data controllers. We cannot recall, correct, or delete those copies.
 
-## 7. Retention
+## 7. Recipients and transfers abroad
+
+We do not sell, rent, or trade personal data. Data is disclosed to:
+
+- **Hetzner Online GmbH** (Germany) — processor, hosting
+- **Cloudflare, Inc.** (USA/global) — processor, downloads
+- **Other Matrix homeservers** (various countries) — independent controllers
+
+## 8. Retention
 
 | Data | Kept for |
 | --- | --- |
@@ -102,7 +110,7 @@ are independent data controllers. We cannot recall, correct, or delete those cop
 | Messages | permanent (due to federation) |
 | Git commit author name and email | permanent |
 
-## 8. Your Rights
+## 9. Your Rights
 
 Under the GDPR, you have the following rights regarding your personal data:
 
@@ -121,7 +129,7 @@ To exercise these rights, please contact us at <a href="mailto:contact@astros-li
 We may ask you to confirm the request from your registered address so we do not hand
 your data to someone else.
 
-## 9. Changes
+## 10. Changes
 
 We may update this policy. The current version is always here with the date at the
 top, and every change is auditable in public git.
