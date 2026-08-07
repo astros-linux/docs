@@ -121,7 +121,7 @@ To exercise these rights, please contact us at <a href="mailto:contact@astros-li
 We may ask you to confirm the request from your registered address so we do not hand
 your data to someone else.
 
-## 8. Changes
+## 9. Changes
 
 We may update this policy. The current version is always here with the date at the
 top, and every change is auditable in public git.
