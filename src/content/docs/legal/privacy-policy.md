@@ -48,10 +48,17 @@ Example:
 - systemd-timesyncd -> NTP pool servers
 - flatpak -> flathub infrastructure
 
-## 4. Website
+## 4. Sites
 
-`astros-linux.org` is a static site. No analytics, no tracking cookies, no
-third-party embeds. Documentation search runs in your browser.
+Our webserver registers all connections to the Sites automatically and collects the following technical information about your visit:
+
+- IP address
+- Date and time of the connection;
+- Operating system and user agent.
+
+We process this data to establish a connection to your device over the Internet.
+We store the aforementioned data in log files in order to ensure the
+security and integrity of our infrastructure.
 
 ## 5. Accounts and community services
 
@@ -67,5 +74,20 @@ you can register and login.
 Our Matrix server has federation enabled, which means your messages
 and public profile are copied to other servers whose operators
 are independent data controllers.
+
+## 6. Your Rights
+
+Under the GDPR, you have the following rights regarding your personal data:
+
+- Right of access (Art. 15 GDPR)
+- Right to rectification (Art. 16 GDPR)
+- Right to deletion (Art. 17 GDPR)
+- Right to restriction of processing (Art. 18 GDPR)
+- Right to data portability (Art. 20 GDPR)
+- Right to object (Art. 21 GDPR)
+- Right to withdraw consent (Art. 7(3) GDPR)
+- Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)
+
+To exercise these rights, please contact us at <a href="mailto:contact@astros-linux.org">contact@astros-linux.org</a>.
 
 ---
