@@ -16,8 +16,6 @@ We are not interested in your data.
 AstrOS is committed to protecting your privacy. This Privacy Policy outlines how
 we collect, use, disclose, and safeguard your information when you visit our
 website and use our services (Forgejo, Matrix, similar).
-By using our login protected services, you agree to the collection and use of information in
-accordance with this policy.
 
 ## 2. Controller
 
