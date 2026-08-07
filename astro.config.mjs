@@ -9,7 +9,14 @@ export default defineConfig({
   site: 'https://astros-linux.org',
   integrations: [
     starlight({
-      plugins: [starlightBlog(), starlightLinksValidator()],
+      plugins: [
+        starlightBlog(),
+        starlightLinksValidator({
+          exclude: [
+            '/blog'
+          ],
+        }),
+      ],
       title: 'AstrOS',
       logo: {
         src: './src/assets/mark.svg',
