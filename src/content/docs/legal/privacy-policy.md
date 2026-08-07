@@ -19,7 +19,7 @@ website and use our services (Forgejo, Matrix, similar).
 
 ## 2. Controller
 
-The data controller responsible for your personal data is: [see legal-notice](../legal-notice)
+The data controller responsible for your personal data is: [see legal-notice](/legal/legal-notice)
 
 ## 3. The operating system
 

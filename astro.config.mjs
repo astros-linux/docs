@@ -2,13 +2,14 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightBlog from 'starlight-blog';
+import starlightLinksValidator from 'starlight-links-validator';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astros-linux.org',
   integrations: [
     starlight({
-      plugins: [starlightBlog()],
+      plugins: [starlightBlog(), starlightLinksValidator()],
       title: 'AstrOS',
       logo: {
         src: './src/assets/mark.svg',
