@@ -52,6 +52,7 @@ export default defineConfig({
         {
           label: 'Guides',
           items: [
+            { slug: "guides/installing-in-a-vm" },
             { slug: "guides/dualboot-with-windows" }
           ]
         },
