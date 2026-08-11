@@ -4,15 +4,6 @@ title: "FAQ"
 
 import { Aside } from '@astrojs/starlight/components';
 
-## Why do I have weird, colourful screen artifacts?
-
-This is due to an issue affecting AMD GPUs in kernels 7.1.6 and 7.1.7. This
-issue is expected to be resolved in the next version of the kernel, 7.1.8.
-
-We have implemented a [env-variable](https://code.astros-linux.org/AstrOS/AstrOS/commit/5f8cf2305df368ba2e9fb78f7b760681b4872e23) that should significantly **reduce** artifacting.
-
-[Fedora Discussion](https://discussion.fedoraproject.org/t/graphical-issues-on-amd-after-kernel-update-to-7-1-6/198522)
-
 ## Why does AstrOS require a TPM2?
 
 Because the security model doesn't work without one. `/usr` is signed and read-only, booted by signed, measured UKIs. The TPM is what checks that chain. Your disk key is sealed to the boot measurements (PCR11), so the system unlocks only if it booted exactly the images we signed.
