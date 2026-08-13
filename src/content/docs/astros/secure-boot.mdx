@@ -36,6 +36,13 @@ To put firmware in Setup Mode, enter firmware setup utility and find an option t
 
 ## Enroll
 
+<Aside>
+Do this before the first boot.
+
+If you are doing this after the first boot, make sure you have your recovery key
+ready. You will need to [re-enroll the TPM](/astros/troubleshooting/#how-to-re-enroll-the-tpm) afterwards.
+</Aside>
+
 To enroll the keys, navigate to the `Enroll Secure Boot Keys` option in Systemd-Boot.
 You will receive a warning that this could soft-break your machine.
 This is the previously mentioned problem of some ROMs being signed with
