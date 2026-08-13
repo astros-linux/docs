@@ -19,7 +19,7 @@ List and install available extensions with:
 ```sh
 updatectl features
 
-updatectl enable --now --reboot <feature>
+updatectl enable --now --reboot <feature> # With --now, you need to be on the latest version. Alternatively, you can leave it out and run 'updatectl update' afterwards
 ```
 
 Disable extensions:
