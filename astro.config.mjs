@@ -41,6 +41,7 @@ export default defineConfig({
             { slug: "astros" },
             { slug: "astros/installation" },
             { slug: "astros/updating" },
+            { slug: "astros/secure-boot" },
             { slug: "astros/installing-software" },
             { slug: "astros/gaming" },
             { slug: "astros/waydroid" },

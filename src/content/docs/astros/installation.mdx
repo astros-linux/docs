@@ -3,6 +3,7 @@ title: Installation
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
 
 ## Requirements
 
@@ -31,12 +32,20 @@ Any tool that writes a raw image (e.g. `dd`) works too. Remember to decompress t
 
 <Steps>
 
-1. Ensure that Secure Boot is either disabled or in Setup Mode.
-1. Boot the usb stick.
-1. Select and confirm your disk to install to.
-1. Done
+1. Ensure that Secure Boot is in Setup Mode.
+2. Boot the usb stick.
+3. Select and confirm your disk to install to.
+4. Done
 
 </Steps>
+
+### Secure Boot
+
+<Aside type="caution">Depending on your hardware, enrolling Secure Boot keys can soft-brick your machine. Learn more on our dedicated [Secure Boot page](/astros/secure-boot).</Aside>
+
+To enable Secure Boot, select the `Enroll Secure Boot Keys` option before booting the system for the first time.
+If you do this after booting for the first time, it will break PCR7, which will
+require you to [re-enroll the TPM2](/astros/troubleshooting/#how-to-re-enroll-the-tpm).
 
 ### First Boot Setup
 

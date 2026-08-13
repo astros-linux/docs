@@ -1,0 +1,42 @@
+---
+title: "Secure Boot"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution">
+Some device firmware (OpROMs) requires its own/Microsoft's key to work with
+Secure Boot enabled.
+Firmware may not be able to load which can soft-brick your machine or disable
+display output, leaving you unable to see the UEFI settings menus and revert
+these changes. In that case you will need to reset your computer's UEFI or
+re-flash it from a bricked state.
+</Aside>
+
+<Aside>In the future, we plan to offer the option of enrolling Microsoft's keys in addition to our own.</Aside>
+
+If you have the option to enable and enroll custom keys, it is highly recommended
+that you do so in order to protect your encrypted data from boot-chain attacks.
+
+## Check Hardware for OpROM signatures
+
+Detailed Guide: [Arch Wiki](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Determine_OpROM_signature)
+
+Use the following command to see if you have any devices with OpROM:
+
+```sh
+find /sys/devices/ -name rom
+```
+
+## Setup Mode
+
+In order for the option to enroll AstrOS's own keys to appear, the system's Secure Boot needs to be in Setup Mode.
+
+To put firmware in Setup Mode, enter firmware setup utility and find an option to delete or clear certificates.
+
+## Enroll
+
+To enroll the keys, navigate to the `Enroll Secure Boot Keys` option in Systemd-Boot.
+You will receive a warning that this could soft-break your machine.
+This is the previously mentioned problem of some ROMs being signed with
+Microsoft's keys.
