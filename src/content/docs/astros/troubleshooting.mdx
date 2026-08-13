@@ -15,7 +15,7 @@ sudo systemd-cryptenroll --wipe-slot tpm2 /dev/disk/by-label/luks-AstrOS-root
 Enroll your tpm2, you will be asked for your recovery key.
 
 ```sh
-sudo systemd-cryptenroll --tpm2-device auto /dev/disk/by-label/luks-AstrOS-root
+sudo systemd-cryptenroll --tpm2-device auto --tpm2-pcrs=7 /dev/disk/by-label/luks-AstrOS-root
 ```
 
 ## How to rollback?
