@@ -26,7 +26,13 @@ Write it to a USB stick. We recommend [caligula](https://github.com/ifd3f/caligu
 caligula burn AstrOS-installer_latest_x86-64.raw.zst
 ```
 
-Any tool that writes a raw image (e.g. `dd`) works too. Remember to decompress the image.
+Any tool that writes a raw image works too. Remember to decompress the image.
+
+`dd` example:
+
+```sh
+unzstd -c AstrOS-installer_latest_x86-64.raw.zst | sudo dd of=/dev/<your-disk> bs=4M conv=fsync status=progress
+```
 
 ## Install
 
