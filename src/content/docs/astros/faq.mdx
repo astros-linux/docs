@@ -6,7 +6,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 ## Why does AstrOS require a TPM2?
 
-Because the security model doesn't work without one. `/usr` is signed and read-only, booted by signed, measured UKIs. The TPM is what checks that chain. Your disk key is sealed to the boot measurements (PCR11), so the system unlocks only if it booted exactly the images we signed.
+Because the security model doesn't work without one. `/usr` is signed and read-only, booted by signed, measured UKIs. The TPM is what checks that chain. Your disk key is sealed to the boot measurements (PCR11+7), so the system unlocks only if it booted exactly the images we signed.
 
 ## What is the root password for the install image?
 
