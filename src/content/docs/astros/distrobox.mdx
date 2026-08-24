@@ -1,0 +1,71 @@
+---
+title: "Distrobox"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+
+export const distroboxini = `[astros]
+additional_packages="fastfetch btop"
+image=docker.io/astroslinux/distrobox-container
+replace=true
+pull=true
+exported_apps="btop"`
+
+Because of its image-based nature, AstrOS does not ship with a package manager
+on the host. Anything that is neither available as a Flatpak nor a system extension usually
+belongs in a Distrobox container.
+
+<Aside title="Flatpak first">
+For graphical applications, check the `cosmic-store` before reaching for Distrobox.
+
+Use Distrobox for CLI tools, toolchains and anything that has no Flatpak.
+</Aside>
+
+## Creating your first container
+
+Running `distrobox enter` with no arguments creates and enters a default container.
+
+You can create more advanced containers with [distrobox-create](https://distrobox.it/usage/distrobox-create/).
+
+Tip: use `--home` to select a custom HOME directory for the container.
+
+## Installing software inside a container
+
+Once you are inside, use whatever package manager the image ships.
+This is `pacman` and `yay` for our own image.
+
+<Aside type="caution" title="Use yay with care!">
+Anyone can upload to the AUR. Read the `PKGBUILD`
+before installing packages, and review the diff on every update.
+</Aside>
+
+## Exporting apps and binaries to the host
+
+You can use [distrobox-export](https://distrobox.it/usage/distrobox-export/) for this.
+
+Example:
+
+```sh
+distrobox-export --app coolapp
+```
+
+## Distrobox Assemble
+
+<Aside>We recommend using Assemble because it provides a reproducible, declarative setup.</Aside>
+
+[distrobox-assemble](https://distrobox.it/usage/distrobox-assemble/) takes care of creating or destroying containers in batches,
+based on a manifest file. The manifest file by default is `./distrobox.ini`,
+but can be specified using the `--file` flag.
+
+Example:
+
+<Code code={distroboxini} title='distrobox.ini'/>
+
+Bring it up:
+
+```sh
+distrobox assemble create
+```
+
+You may want to see our own [`distrobox.ini`](https://code.astros-linux.org/AstrOS/AstrOS-definitions/src/branch/main/distrobox.ini), which we use for developing AstrOS.
