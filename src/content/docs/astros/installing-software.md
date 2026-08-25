@@ -10,7 +10,9 @@ If a software is available as a Flatpak, it should be your first option. You can
 
 For software not available as a Flatpak or terminal tools, use Distrobox.
 
-Run `distrobox enter` for creating and entering your first Distrobox. It defaults to Arch Linux.
+Run `distrobox enter` for creating and entering your first Distrobox.
+
+Learn more: [Distrobox](/astros/distrobox)
 
 ## System Extensions
 
