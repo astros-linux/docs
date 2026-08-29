@@ -13,10 +13,17 @@ these changes. In that case you will need to reset your computer's UEFI or
 re-flash it from a bricked state.
 </Aside>
 
-<Aside>In the future, we plan to offer the option of enrolling Microsoft's keys in addition to our own.</Aside>
-
 If you have the option to enable and enroll custom keys, it is highly recommended
 that you do so in order to protect your encrypted data from boot-chain attacks.
+
+AstrOS ships two sets of keys and lets you choose which to enroll:
+
+| Set | Contains | Use when |
+| --- | --- | --- |
+| `astros+microsoft` | AstrOS keys **plus** Microsoft's UEFI and Windows certificates | Hardware with Microsoft-signed OpROMs |
+| `astros` | AstrOS keys only | Virtual machines, or hardware you have confirmed has no Microsoft-signed OpROMs |
+
+Read the section below to work out which one applies to your machine.
 
 ## Check Hardware for OpROM signatures
 
@@ -28,6 +35,12 @@ Enter the following command to check for devices with OpROM: If so, look at the 
 find /sys/devices/ -name rom
 ```
 
+If this returns anything, or if you are unsure, choose `astros+microsoft`.
+Discrete graphics cards, storage controllers and network adapters commonly carry
+firmware signed by Microsoft's UEFI CA. Enrolling `astros` alone on such a
+machine means that firmware will refuse to load, which is the soft-brick
+scenario described above.
+
 ## Setup Mode
 
 In order for the option to enroll AstrOS's own keys to appear, the system's Secure Boot needs to be in Setup Mode.
@@ -38,12 +51,16 @@ To put firmware in Setup Mode, enter firmware setup utility and find an option t
 
 <Aside>
 Do this before the first boot.
-
 If you are doing this after the first boot, make sure you have your recovery key
 ready. You will need to [re-enroll the TPM](/astros/troubleshooting/#how-to-re-enroll-the-tpm) afterwards.
 </Aside>
 
-To enroll the keys, navigate to the `Enroll Secure Boot Keys` option in Systemd-Boot.
-You will receive a warning that this could soft-break your machine.
+Once the firmware is in Setup Mode, systemd-boot will show one entry per key set:
+
+- `Enroll Secure Boot keys: astros+microsoft`
+- `Enroll Secure Boot keys: astros`
+
+Select the one that matches your hardware, then confirm. You will receive a
+warning that this could soft-break your machine.
 This is the previously mentioned problem of some ROMs being signed with
 Microsoft's keys.

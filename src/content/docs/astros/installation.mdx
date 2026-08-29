@@ -52,7 +52,17 @@ unzstd -c AstrOS-installer_latest_x86-64.raw.zst | sudo dd of=/dev/<your-disk> b
 
 <Aside type="caution">Depending on your hardware, enrolling Secure Boot keys can soft-brick your machine. Learn more on our dedicated [Secure Boot page](/astros/secure-boot).</Aside>
 
-To enable Secure Boot, select the `Enroll Secure Boot Keys` option before booting the system for the first time.
+To enable Secure Boot, select one of the enrollment options before booting the
+system for the first time:
+
+- `Enroll Secure Boot keys: astros+microsoft` recommended on physical hardware.
+  Includes Microsoft's certificates, which most device firmware relies on.
+- `Enroll Secure Boot keys: astros` AstrOS keys only. For virtual machines, or
+  hardware you have [confirmed](/astros/secure-boot#check-hardware-for-oprom-signatures)
+  carries no Microsoft-signed firmware.
+
+These entries only appear when your firmware is in Setup Mode.
+
 If you do this after booting for the first time, it will break PCR7, which will
 require you to [re-enroll the TPM2](/astros/troubleshooting/#how-to-re-enroll-the-tpm).
 
