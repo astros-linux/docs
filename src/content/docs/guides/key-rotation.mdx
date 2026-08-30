@@ -1,0 +1,42 @@
+---
+title: "Key Rotation Guide"
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside>
+  If you have stumbled upon this guide randomly, you can ignore it.
+  These steps are used in cases where you have been explicitly sent here,
+  for example by an announcement informing you that we have
+  rotated our keys.
+</Aside>
+
+<Aside type="caution">Have your recovery key ready, you will need it.</Aside>
+
+<Steps>
+
+1. Replace the ESP with the signed upstream files:
+
+   ```sh
+   curl -fsSLO https://code.astros-linux.org/AstrOS/AstrOS-definitions/raw/branch/main/astros-esp-update.sh
+
+   # Recommended: Take a close look at the script. Blindly running scripts is dangerous.
+   less astros-esp-update.sh
+   
+   sudo bash astros-esp-update.sh
+   ```
+
+2. Update to the latest version containing the new keys and reboot the system:
+
+   ```sh
+   updatectl update && reboot
+   ```
+
+3. Set Secure Boot to [Setup Mode](/astros/secure-boot/#setup-mode).
+
+4. [Enroll](http://localhost:4321/astros/secure-boot/#enroll) the new keys to firmware.
+
+5. [Re-enroll](/astros/troubleshooting/#how-to-re-enroll-the-tpm) to the tpm2 chip.
+
+</Steps>
