@@ -1,7 +1,15 @@
 ---
-title: "Secure Boot: now with optional Microsoft key enrollment"
+title: "Breaking Change: Secure Boot - now with optional Microsoft key enrollment"
 date: 2026-08-30
 ---
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="danger">
+  We have also rotated our keys with this change. Current and future Secureboot
+  users must follow our [key-rotation guide](/guides/key-rotation/). Everyone else
+  _only_ needs to [re-enroll the TPM](/astros/troubleshooting/#how-to-re-enroll-the-tpm).
+</Aside>
 
 ![systemd-boot menu](../../../assets/secure-boot.png)
 
@@ -25,9 +33,3 @@ allows the firmware to boot Microsoft-signed software / option ROMs.
 The user can choose which to enroll when booting from Setup Mode.
 
 Learn more on our [Secure Boot](/astros/secure-boot) page.
-
-## Existing installations
-
-Currently, we don't have a mechanism for changing parts of the user ESP post installation,
-so this change won't affect existing installations. In order to get the change,
-you have to either reinstall or manually copy the `keys` folder.
