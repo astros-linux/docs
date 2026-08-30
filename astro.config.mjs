@@ -62,7 +62,8 @@ export default defineConfig({
         {
           label: 'Developer',
           items: [
-            { slug: "dev/building" }
+            { slug: "dev/building" },
+            { slug: "dev/update-to-local-build" }
           ]
         },
         {
