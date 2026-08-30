@@ -55,6 +55,7 @@ export default defineConfig({
           label: 'Guides',
           items: [
             { slug: "guides/installing-in-a-vm" },
+            { slug: "guides/key-rotation" },
             { slug: "guides/dualboot-with-windows" }
           ]
         },
