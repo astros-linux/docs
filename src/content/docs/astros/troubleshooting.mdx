@@ -37,3 +37,25 @@ cat /etc/os-release
 
 You probably have a keyboard from outside the US where the `-` is in a different
 position or the `y` and `z` are switched. Try replicating the US keyboard layout.
+
+## Updatectl update fails
+
+Check if the _esp_ is mounted under /boot
+
+If it isn't, mount it manually using:
+
+```sh
+sudo mount /dev/disk/by-partlabel/esp /boot
+```
+
+If this issue persists, please reach out to Support.
+
+## libvirtd fails to start
+
+Try to delete the following file and restart libvirtd.
+
+```sh
+sudo rm /var/lib/libvirt/secrets/secrets-encryption-key
+
+sudo systemctl restart libvirtd
+```
