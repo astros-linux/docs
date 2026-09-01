@@ -4,9 +4,17 @@ title: "FAQ"
 
 import { Aside } from '@astrojs/starlight/components';
 
+## What is Safe Mode?
+
+Safe mode starts your system with all system extensions disabled. In the worst-case scenario, where a system extension prevents your system from booting at all, safe mode lets you boot up and so you can disable the extension. In such cases, please report the extension responsible.
+
 ## Why does AstrOS require a TPM2?
 
 Because the security model doesn't work without one. `/usr` is signed and read-only, booted by signed, measured UKIs. The TPM is what checks that chain. Your disk key is sealed to the boot measurements (PCR11+7), so the system unlocks only if it booted exactly the images we signed.
+
+## How to enable Secure Boot?
+
+Take a look at: [Secure Boot](/astros/secure-boot)
 
 ## What is the root password for the install image?
 
@@ -29,11 +37,3 @@ You can install firewalld as a [system extension](/astros/installing-software/#s
 ## Is AstrOS the right distro for me?
 
 AstrOS is a strongly opinionated project. Due to its image-based nature, it isn't really for tinkerers. It is for those who want a secure, encrypted, and signed operating system that just works with minimal effort.
-
-## How to enable Secure Boot?
-
-Take a look at: [Secure Boot](/astros/secure-boot)
-
-## What is Safe Mode?
-
-Safe mode starts your system with all system extensions disabled. In the worst-case scenario, where a system extension prevents your system from booting at all, safe mode lets you boot up and so you can disable the extension. In such cases, please report the extension responsible.
