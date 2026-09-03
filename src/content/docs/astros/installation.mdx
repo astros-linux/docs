@@ -20,13 +20,15 @@ Grab the latest image:
 
 [SHA256SUMS](https://dl.astros-linux.org/SHA256SUMS)
 
-Write it to a USB stick. We recommend [caligula](https://github.com/ifd3f/caligula):
+Write it to a USB stick. We recommend [caligula](https://github.com/ifd3f/caligula) on Linux and [Rufus](https://rufus.ie/) with [NanaZip](https://nanazip.org/) on Windows.
+
+`caligula` example (it decompresses the image for you):
 
 ```sh
 caligula burn AstrOS-installer_latest_x86-64.raw.zst
 ```
 
-Any tool that writes a raw image works too. Remember to decompress the image.
+Any other tool that writes a raw image works too. Remember to decompress the image.
 
 `dd` example:
 
