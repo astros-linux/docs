@@ -19,8 +19,9 @@ mkosi -f -B # This builds to `mkosi.output/`
 installer:
 
 ```sh
-git clone --recurse-submodules https://code.astros-linux.org/AstrOS/AstrOS.git
-# zstd -o ./installer/mkosi.extra/images/AstrOS.raw.zst ./system/mkosi.output/AstrOS*_x86-64.raw
-cd AstrOS/installer
+git clone --recurse-submodules https://code.astros-linux.org/AstrOS/AstrOS.git && cd AstrOS
+# cp ./system/mkosi.output/AstrOS*_x86-64.raw.zst ./installer/mkosi.extra/images/AstrOS.raw.zst
+# cd ./installer/mkosi.extra/images/ && sha256sum AstrOS.raw.zst > AstrOS.raw.zst.sha256 && cd -
+cd installer
 mkosi -f -B # This builds to `mkosi.output/`
 ```
