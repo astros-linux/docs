@@ -23,9 +23,7 @@ import { Aside } from '@astrojs/starlight/components';
 
    For fresh installs use: [Arch Wiki: dictate the size of the EFI system partition during installation](https://wiki.archlinux.org/title/Dual_boot_with_Windows#The_EFI_system_partition_created_by_Windows_Setup_is_too_small)
 
-2. <Aside>Dual booting with Secure Boot enabled won't work because AstrOS uses its own keys.</Aside>
-
-   Disable Secure Boot and verify that Windows still boots up.
+2. Disable Secure Boot and verify that Windows still boots up. You can re-enable it later with the [`astros+microsoft` secureboot keys](/astros/secure-boot/).
 
 3. Lastly, open Disk Management and shrink your Windows NTFS partition.
 
