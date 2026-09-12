@@ -1,5 +1,5 @@
 ---
-title: "AstrOS is now on fluxer"
+title: "AstrOS is now on Fluxer"
 date: 2026-09-12
 ---
 
