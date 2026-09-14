@@ -26,13 +26,15 @@ cd installer
 mkosi -f -B # This builds to `mkosi.output/`
 ```
 
-Run mkosi using podman:
+Tip: add the following wrapper to your .bashrc file to run mkosi via `mkosi-podman` inside a container:
 
-```sh
-mkdir ~/.cache/mkosi-podman
-podman run --rm -it \
-  -v "$PWD":/work:z \
-  -v "$HOME/.cache/mkosi-podman":/var/tmp:z \
-  -w /work docker.io/archlinux:latest \
-  bash -c 'pacman -Syyu --noconfirm --needed mkosi && mkosi'
+```bashrc
+mkosi-podman() {
+  mkdir -p ~/.cache/mkosi-podman
+  podman run --rm -it \
+    -v "$PWD":/work:z \
+    -v "$HOME/.cache/mkosi-podman":/var/tmp:z \
+    -w /work docker.io/archlinux:latest \
+    bash -c 'pacman -Syu --noconfirm --needed mkosi && mkosi "$@"' _ "$@"
+}
 ```
