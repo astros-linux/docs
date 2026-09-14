@@ -25,3 +25,10 @@ git clone --recurse-submodules https://code.astros-linux.org/AstrOS/AstrOS.git &
 cd installer
 mkosi -f -B # This builds to `mkosi.output/`
 ```
+
+Run mkosi using podman:
+
+```sh
+mkdir ~/.cache/mkosi-podman
+podman run --rm -it -v "$PWD":/work:z -v "$HOME/.cache/mkosi-podman":/var/tmp:z -w /work docker.io/archlinux:latest bash -c 'pacman -Syyu --noconfirm --needed mkosi && mkosi -fB'
+```
