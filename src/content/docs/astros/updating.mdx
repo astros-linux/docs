@@ -19,7 +19,7 @@ Use `updatectl vacuum` in case of the update failing because of previously unfin
 To enable auto-updates run:
 
 ```sh
-systemctl enable --now systemd-sysupdate.timer
+systemctl enable --now systemd-sysupdate-update.timer
 ```
 
 It triggers the update 15min after boot, and then on average every 6 hours, but randomly distributed.
