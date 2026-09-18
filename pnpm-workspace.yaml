@@ -2,8 +2,5 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAgeExclude:
-  - '@astrojs/starlight@0.41.5'
-  - '@astrojs/starlight@0.41.6'
+  - '@astrojs/starlight@0.41.5 || 0.41.6 || 0.42.2'
   - astro@7.2.0
-patchedDependencies:
-  '@astrojs/starlight': patches/@astrojs__starlight.patch
