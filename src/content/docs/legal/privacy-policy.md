@@ -2,7 +2,7 @@
 title: "Privacy Policy"
 ---
 
-*Last updated: 2026-08-07*
+*Last updated: 2026-09-19*
 
 **The short version:** AstrOS ships no telemetry added by us, no analytics, and no crash
 reporting. The operating system contacts our infrastructure only when *you* or *auto-update*
@@ -109,6 +109,7 @@ We do not sell, rent, or trade personal data. Data is disclosed to:
 | Account data | until you delete your account |
 | Messages | permanent (due to federation) |
 | Git commit author name and email | permanent |
+| Backups | 90 days |
 
 ## 9. Your Rights
 
