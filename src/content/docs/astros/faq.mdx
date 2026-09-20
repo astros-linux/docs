@@ -44,3 +44,37 @@ We only allow AstrOS-related repositories on our instance. You can always fork
 existing repositories. If you want to open a completely new repository for
 your own AstrOS-related project, please contact us so that we can grant you the
 relevant permissions.
+
+## What makes AstrOS different from Arch?
+
+While AstrOS is built from Arch packages, it isn't like the Arch you install and
+maintain yourself. It's a finished image that we build, sign, and ship as a whole.
+
+There is no pacman on the installed system. `/usr` is a read-only image protected
+by dm-verity, so nothing can modify it. To add software, see [Installing Software](/astros/installing-software/).
+
+Updates are delivered as complete new `/usr` images and UKIs using `systemd-sysupdate`
+with an A/B layout. We sign the dm-verity root hash of the `/usr` partition as well
+as the UKIs, so your system only runs images we built.
+
+In short, Arch gives you the pieces and lets you assemble them. AstrOS takes
+those pieces and ships them as one signed system.
+
+## Why is AstrOS based on Arch?
+
+Arch gives us close-to-upstream, up-to-date packages without us having to
+build them from source. We prioritize having the latest systemd and COSMIC
+versions to deliver the best experience.
+
+## Can I use the Arch Wiki?
+
+For applications and general Linux topics, usually yes.
+
+For anything involving installing system software, updating, or changing the base
+system, no. Follow the AstrOS docs instead, since those parts work differently.
+If something is missing, please let us know.
+
+## Why another distro?
+
+Because there was a gap to fill. GNOME has GNOME OS and KDE has KDE Linux, but
+COSMIC didn't have its own "[particle](https://0pointer.net/blog/fitting-everything-together.html)" yet.
