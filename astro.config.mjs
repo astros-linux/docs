@@ -45,6 +45,7 @@ export default defineConfig({
             { slug: "astros/secure-boot" },
             { slug: "astros/installing-software" },
             { slug: "astros/distrobox" },
+            { slug: "astros/nvidia" },
             { slug: "astros/gaming" },
             { slug: "astros/waydroid" },
             { slug: "astros/troubleshooting" },

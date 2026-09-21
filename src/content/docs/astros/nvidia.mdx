@@ -1,0 +1,42 @@
+---
+title: "NVIDIA"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## NVK (Open-source Vulkan driver for NVIDIA)
+
+<Aside>NVK is a rapidly evolving technology, but we recommend that most NVIDIA
+  users use [`nvidia-open`](#nvidia-open-nvidia-open-gpu-kernel-modules) drivers
+  to take full advantage of your GPU's performance.</Aside>
+
+NVK drivers are enabled and included in AstrOS by default. As long as your GPU
+is supported, you are ready to go.
+
+### Hardware support
+
+NVK currently supports Kepler (GeForce 600 and 700 series) and later GPUs.
+
+[More info](https://docs.mesa3d.org/drivers/nvk.html#hardware-support)
+
+## nvidia-open (NVIDIA Open GPU Kernel Modules)
+
+We deliver the `nvidia-open` drivers in the form of a [system extension](/astros/installing-software/#system-extensions).
+
+Install via:
+
+```bash
+updatectl enable --now --reboot nvidia
+```
+
+### Hardware support
+
+The NVIDIA open kernel modules can be used on any Turing or later GPU.
+
+Install via:
+
+```bash
+updatectl enable --now --reboot nvidia
+```
+
+[More info](https://github.com/nvidia/open-gpu-kernel-modules#compatible-gpus)
