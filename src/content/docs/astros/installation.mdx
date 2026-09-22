@@ -57,9 +57,9 @@ unzstd -c AstrOS-installer_latest_x86-64.raw.zst | sudo dd of=/dev/<your-disk> b
 To enable Secure Boot, select one of the enrollment options before booting the
 system for the first time:
 
-- `Enroll Secure Boot keys: astros+microsoft` recommended on physical hardware.
+- `Enroll Secure Boot keys: custom+microsoft` recommended on physical hardware.
   Includes Microsoft's certificates, which most device firmware relies on.
-- `Enroll Secure Boot keys: astros` AstrOS keys only. For virtual machines, or
+- `Enroll Secure Boot keys: custom` AstrOS keys only. For virtual machines, or
   hardware you have [confirmed](/astros/secure-boot#check-hardware-for-oprom-signatures)
   carries no Microsoft-signed firmware.
 
