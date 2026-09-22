@@ -17,7 +17,7 @@ steps:
       - pacman -Syu --noconfirm --needed rsync openssh
       - mkdir -p ~/.ssh && chmod 700 ~/.ssh
       - printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
-      - ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+      - ssh-keyscan -p 2222 -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
       - rsync -e 'ssh -p 2222' -avzP --delete dist/ astros@"$DEPLOY_HOST":/srv
     environment:
       SSH_KEY:
