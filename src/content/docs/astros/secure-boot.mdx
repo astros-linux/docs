@@ -20,8 +20,8 @@ AstrOS ships two sets of keys and lets you choose which to enroll:
 
 | Set | Contains | Use when |
 | --- | --- | --- |
-| `astros+microsoft` | AstrOS keys **plus** Microsoft's UEFI and Windows certificates | Hardware with Microsoft-signed OpROMs |
-| `astros` | AstrOS keys only | Virtual machines, or hardware you have confirmed has no Microsoft-signed OpROMs |
+| `custom+microsoft` | AstrOS keys **plus** Microsoft's UEFI and Windows certificates | Hardware with Microsoft-signed OpROMs |
+| `custom` | Our own keys only | Virtual machines, or hardware you have confirmed has no Microsoft-signed OpROMs |
 
 Read the section below to work out which one applies to your machine.
 
@@ -35,9 +35,9 @@ Enter the following command to check for devices with OpROM: If so, look at the 
 find /sys/devices/ -name rom
 ```
 
-If this returns anything, or if you are unsure, choose `astros+microsoft`.
+If this returns anything, or if you are unsure, choose `custom+microsoft`.
 Discrete graphics cards, storage controllers and network adapters commonly carry
-firmware signed by Microsoft's UEFI CA. Enrolling `astros` alone on such a
+firmware signed by Microsoft's UEFI CA. Enrolling `custom` alone on such a
 machine means that firmware will refuse to load, which is the soft-brick
 scenario described above.
 

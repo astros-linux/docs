@@ -2,7 +2,6 @@
 title: "Breaking Changes"
 ---
 
-import { Steps } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
 ## 2026-08-30: we have rotated our keys
@@ -17,27 +16,7 @@ So, run `updatectl disable --now steam-gaming && updatectl update`, and then
 [re-enable](/astros/gaming/) the gaming extension after rebooting into the newly
 installed version.
 
-## In case of outdated systemd-sysupdate transfer files
-
-<Steps>
-
-1. Download or clone our [repo](https://code.astros-linux.org/AstrOS/AstrOS).
-
-2. Navigate to the correct path:
-
-   ```sh
-   cd AstrOS/system/mkosi.images/base/mkosi.extra/usr/lib/
-   ```
-
-3. Update from the newest transfer files:
-
-   ```sh
-   sudo systemd-sysupdate update --definitions=sysupdate.d/
-   ```
-
-</Steps>
-
-## Upgrading from 20260721000055 or earlier
+## 2026-07-21: switch from tmpfiles to confext for /etc
 
 <Aside type="danger" title="Action required before you reboot">
 Applies to **every** system updating from build `20260721000055` or earlier.

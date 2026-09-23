@@ -14,7 +14,13 @@ steps:
   - name: deploy
     image: docker.io/library/archlinux
     commands:
-      - pacman -Syu --noconfirm --needed rsync
-      - rsync -aP --delete dist/ /mnt
-    volumes:
-      - /srv/astros/docs:/mnt:z
+      - pacman -Syu --noconfirm --needed rsync openssh
+      - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+      - printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+      - ssh-keyscan -p 2222 -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+      - rsync -e 'ssh -p 2222' -avzP --delete dist/ astros@"$DEPLOY_HOST":/srv
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
+      DEPLOY_HOST:
+        from_secret: deploy_host

@@ -28,7 +28,7 @@ mkosi -f -B # This builds to `mkosi.output/`
 
 Tip: add the following wrapper to your .bashrc file to run mkosi via `mkosi-podman` inside a container:
 
-```bashrc
+```bash
 mkosi-podman() {
   mkdir -p ~/.cache/mkosi-podman
   podman run --rm -it \

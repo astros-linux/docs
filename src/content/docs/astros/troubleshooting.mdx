@@ -3,6 +3,7 @@ title: Troubleshooting
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
 
 ## How to re-enroll the tpm?
 
@@ -39,6 +40,28 @@ You probably have a keyboard from outside the US where the `-` is in a different
 position or the `y` and `z` are switched. Try replicating the US keyboard layout.
 
 ## Updatectl update fails
+
+### Outdated systemd-sysupdate transfer files
+
+<Steps>
+
+1. Download or clone our [repo](https://code.astros-linux.org/AstrOS/AstrOS).
+
+2. Navigate to the correct path:
+
+   ```sh
+   cd AstrOS/system/mkosi.images/base/mkosi.extra/usr/lib/
+   ```
+
+3. Update from the newest transfer files:
+
+   ```sh
+   sudo systemd-sysupdate update --definitions=sysupdate.d/
+   ```
+
+</Steps>
+
+### ESP is not mounted
 
 Check if the _esp_ is mounted under /boot
 
