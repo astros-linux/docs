@@ -12,7 +12,7 @@ updatectl update
 
 Use `updatectl vacuum` in case of the update failing because of previously unfinished updates.
 
-### Auto Updates
+## Auto Updates
 
 <Aside type="caution">We don't recommend enabling automatic updates while we are still in beta.</Aside>
 
@@ -25,3 +25,10 @@ systemctl enable --now systemd-sysupdate.timer
 It triggers the update 15min after boot, and then on average every 6 hours, but randomly distributed.
 
 In addition it updates persistently once on each Saturday, to ensure that even systems that weren't booted up for a long time have a chance to do the update.
+
+### Flatpak
+
+By default, `flatpak-update.timer` is set up as both a system and a user unit.
+It updates randomly between 0 and 1 hours after boot, on a daily basis.
+
+Run 'systemctl (--user) disable flatpak-update.timer' to disable it.
