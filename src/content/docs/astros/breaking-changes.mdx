@@ -3,6 +3,32 @@ title: "Breaking Changes"
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+
+## 2026-09-26: cosmic-greeter keeps crashing
+
+cosmic-greeter 1.9 has a problem on fresh installs where it can't start itself.
+You can work around it with the following steps:
+
+<Steps>
+
+1. Open a TTY by pressing <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F2</kbd>.
+
+2. Log in with your username and password.
+
+3. Start the COSMIC session manually:
+
+```bash
+   start-cosmic
+```
+
+1. Go through the cosmic initial setup.
+
+</Steps>
+
+Once setup is complete, cosmic-greeter will work normally on future reboots.
+
+Upstream is working on fixing the issue.
 
 ## 2026-08-30: we have rotated our keys
 
