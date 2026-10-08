@@ -33,7 +33,7 @@ Any other tool that writes a raw image works too. Remember to decompress the ima
 `dd` example:
 
 ```sh
-unzstd -c AstrOS-installer_latest_x86-64.raw.zst | sudo dd of=/dev/<your-disk> bs=4M conv=fsync status=progress
+unzstd -c AstrOS-installer_latest_x86-64.raw.zst | sudo dd of=/dev/<your-usb-device> bs=4M conv=fsync status=progress
 ```
 
 ## Install
