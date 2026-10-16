@@ -8,7 +8,7 @@ steps:
   - name: build system
     image: docker.io/library/archlinux
     commands:
-      - pacman -Syu --noconfirm --needed pnpm
+      - pacman -Syu --noconfirm --needed pnpm nodejs
       - pnpm build
 
   - name: deploy
