@@ -31,7 +31,7 @@ Tip: add the following wrapper to your .bashrc file to run mkosi via `mkosi-podm
 ```bash
 mkosi-podman() {
   mkdir -p ~/.cache/mkosi-podman
-  podman run --rm -it \
+  podman run --rm -it --init \
     -v "$PWD":/work:z \
     -v "$HOME/.cache/mkosi-podman":/var/tmp:z \
     -w /work docker.io/archlinux:latest \
