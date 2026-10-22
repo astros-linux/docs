@@ -13,6 +13,11 @@ import { Aside } from '@astrojs/starlight/components';
   Backup your important files!
 </Aside>
 
+This guide uses the official installer image. Instead of letting the installer
+wipe the disk, you run a similar `systemd-repart --copy-from` command it uses
+yourself, but against a disk that already has Windows on it. Your Windows partitions
+and the EFI system partition (ESP) are left as they are, and AstrOS is added next to them.
+
 ## Prepare windows
 
 <Steps>
@@ -23,7 +28,8 @@ import { Aside } from '@astrojs/starlight/components';
 
    For fresh installs use: [Arch Wiki: dictate the size of the EFI system partition during installation](https://wiki.archlinux.org/title/Dual_boot_with_Windows#The_EFI_system_partition_created_by_Windows_Setup_is_too_small)
 
-2. Disable Secure Boot and verify that Windows still boots up. You can re-enable it later with the [`astros+microsoft` secureboot keys](/astros/secure-boot/).
+2. Disable Secure Boot and verify that Windows still boots up. You can re-enable
+it later with the [`astros+microsoft` secureboot keys](/astros/secure-boot/).
 
 3. Lastly, open Disk Management and shrink your Windows NTFS partition.
 
@@ -33,34 +39,68 @@ import { Aside } from '@astrojs/starlight/components';
 
 <Steps>
 
-1. We won't use the official installer. Instead, download the AstrOS DDI (system image) from [https://dl.astros-linux.org/AstrOS_'LATEST-VERSION'_x86-64.raw.zst](https://dl.astros-linux.org/AstrOS_'LATEST-VERSION'_x86-64.raw.zst).
-You can find the latest version number in the [CI logs](https://ci.astros-linux.org/repos/1). Otherwise, download and mount the official installer to copy the DDI out of the `images` partition.
+1. [Download](/astros/installation/#download) the official installer and write
+   it to a USB stick as described on the installation page.
 
-2. Write the DDI to a USB stick with at least 16 GB of storage and boot it.
+2. Boot the USB stick. The installer starts on its own. **Just leave it on its
+   first screen** and don't answer its prompts.
 
-3. Go through the first boot setup and open a terminal.
+3. Switch to a second console with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F2</kbd>
+   and log in as `root` with the password `AstrOS`.
 
-4. Use systemd repart to clone AstrOS to your system disk:
+4. Find your Windows disk. It's the one with the `EFI System`,
+   `Microsoft reserved` and `Microsoft basic data` partitions:
 
    ```sh
-   sudo systemd-repart --dry-run=yes --empty=refuse --defer-partitions=root /dev/drive
-   # Confirm that everything is as you want it to be, and then run it again with --dry-run=no.
-   sudo systemd-repart --dry-run=no --empty=refuse --defer-partitions=root /dev/drive
+   lsblk -o NAME,SIZE,PARTTYPENAME,PARTLABEL
    ```
 
-5. Mount the ESP of the partition to which you will install and use rsync to copy /boot to it:
+5. Dry run the installation. Compared to the installer, `--empty=force` (wipe the
+   disk) is replaced by `--empty=refuse` (keep the existing partition table):
 
+   ```sh
+   DEFS=$(mktemp -d)
+   systemd-repart \
+     --dry-run=yes \
+     --empty=refuse \
+     --seed=random \
+     --definitions="$DEFS" \
+     --copy-from=/images/AstrOS.raw \
+     "/dev/disk-containing-windows"
    ```
-   sudo mkdir /mnt
-   sudo mount /dev/sdxY /mnt
-   sudo cp -r /boot/. /mnt
 
-6. Create a boot entry (only required on some hardware).
+   Check the output:
+   - The ESP and all Windows partitions must show no changes (no `→` in their size column).
+   - Make sure `AstrOS_<version>` gets the remaining free space as padding. First boot uses it to grow `/usr` to 5G and to
+     create the second update slot and your encrypted root partition.
 
+6. If everything looks good, run it again with `--dry-run=no`.
+
+7. Since the ESP already existed, `systemd-repart` kept it as it is and didn't copy anything into it.
+   Copy the content of the image's ESP to your system's ESP:
+
+   ```sh
+   LOOP=$(losetup -frP --show /images/AstrOS.raw)
+   mkdir -p /mnt/image-esp /mnt/esp
+   mount -o ro "${LOOP}p1" /mnt/image-esp
+   mount "/dev/esp-partition" /mnt/esp
+
+   cp -rv /mnt/image-esp/. /mnt/esp/
+
+   umount /mnt/image-esp /mnt/esp
+   losetup -d "$LOOP"
    ```
+
+8. Create a boot entry (only required on some hardware).
+
+   ```sh
    efibootmgr --create --disk /dev/sdX --part Y --loader '\EFI\systemd\systemd-bootx64.efi' --label "AstrOS" --unicode
    ```
 
-7. Reboot
+9. Reboot and remove the USB stick:
+
+    ```sh
+    systemctl reboot
+    ```
 
 </Steps>
