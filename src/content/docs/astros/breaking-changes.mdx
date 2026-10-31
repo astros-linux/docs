@@ -5,6 +5,14 @@ title: "Breaking Changes"
 import { Aside } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 
+## 2026-10-31: features need a second `updatectl update`
+
+Feature configuration now ships as separate confexts, which the update to this
+version doesn't download yet. If you have any feature enabled, run
+`updatectl update` again after rebooting into the new version, then reboot once
+more. Until then, your features run without their configuration (e.g. firewalld
+won't start).
+
 ## 2026-09-26: cosmic-greeter keeps crashing
 
 <Aside>Fixed in 20260926224913</Aside>
