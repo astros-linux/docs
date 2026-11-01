@@ -5,6 +5,26 @@ title: "Breaking Changes"
 import { Aside } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 
+## 2026-11-01: root disk key is now bound to early boot
+
+The key of your encrypted root partition was sealed to a TPM policy that stays
+valid for the whole boot. A crafted root partition booted with our signed images
+could therefore get the TPM to release your real key once the system had left
+the initrd.
+
+New installs now seal the key so that it can only be unlocked in the initrd.
+Existing installs keep working, but stay affected until you re-enroll:
+
+<Steps>
+
+1. Update and reboot into the new version.
+
+2. Make sure you have your recovery key.
+
+3. [Re-enroll the TPM](/astros/troubleshooting/#how-to-re-enroll-the-tpm).
+
+</Steps>
+
 ## 2026-10-31: features need a second `updatectl update`
 
 Feature configuration now ships as separate confexts, which the update to this
