@@ -85,3 +85,12 @@ sudo rm /var/lib/libvirt/secrets/secrets-encryption-key
 
 sudo systemctl restart libvirtd
 ```
+
+## Gamescope won't start from a TTY
+
+The TTY runs on kmscon, which holds the display. To start gamescope from it,
+use `kmscon-launch-gui`, which gives the display to gamescope while it runs:
+
+```sh
+kmscon-launch-gui gamescope -- <your-app>
+```
